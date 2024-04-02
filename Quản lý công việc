@@ -1,0 +1,46 @@
+class CongViecQuanLy:
+    def __init__(self):
+        self.cong_viecs = []
+
+    def them_cong_viec(self, cong_viec):
+        self.cong_viecs.append(cong_viec)
+        print(f"Đã thêm công việc: '{cong_viec}'")
+
+    def hien_thi_cong_viec(self):
+        if not self.cong_viecs:
+            print("Không có công việc nào trong danh sách.")
+        else:
+            print("Công việc trong danh sách:")
+            for idx, cong_viec in enumerate(self.cong_viecs, start=1):
+                print(f"{idx}. {cong_viec}")
+
+    def xoa_cong_viec(self, idx):
+        if 0 <= idx < len(self.cong_viecs):
+            removed = self.cong_viecs.pop(idx)
+            print(f"Đã xóa công việc: '{removed}'")
+        else:
+            print("Không tìm thấy công việc để xóa!")
+
+if __name__ == "__main__":
+    quan_ly = CongViecQuanLy()
+    while True:
+        print("\nQuản lý công việc hàng ngày")
+        print("1. Thêm công việc")
+        print("2. Hiển thị danh sách công việc")
+        print("3. Xóa công việc")
+        print("4. Thoát")
+        lua_chon = input("Nhập lựa chọn của bạn (1-4): ")
+
+        if lua_chon == '1':
+            cong_viec = input("Nhập công việc mới: ")
+            quan_ly.them_cong_viec(cong_viec)
+        elif lua_chon == '2':
+            quan_ly.hien_thi_cong_viec()
+        elif lua_chon == '3':
+            idx = int(input("Nhập vị trí của công việc muốn xóa (bắt đầu từ 0): "))
+            quan_ly.xoa_cong_viec(idx)
+        elif lua_chon == '4':
+            print("Đã thoát ứng dụng.")
+            break
+        else:
+            print("Lựa chọn không hợp lệ, vui lòng thử lại.")
